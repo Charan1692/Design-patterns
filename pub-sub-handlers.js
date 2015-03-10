@@ -1,7 +1,7 @@
 //Example of module and pub-sub pattern
 //We use pub-sub when we want to implement events/handlers
 
-//For example - Implementation of click event in jQuery
+//For example - Implementation of on - click event in jQuery
 
 (function(ns) {
 	var handlers = {};
