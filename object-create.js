@@ -53,3 +53,22 @@ console.log(LoyalCustomer.getType()); //loyal Customer
 console.log(Customer.__proto__ === Person) //true
 console.log(LoyalCustomer.__proto__ === Customer) //true
 console.log(LoyalCustomer.__proto__ === Person) //false
+
+
+/*
+
+Object.create builds an object that inherits directly from the one passed as its first 
+argument.
+
+With constructor functions, the newly created object inherits from the constructor's 
+prototype, e.g.:
+
+var o = new SomeConstructor();
+In the above example, o inherits directly from SomeConstructor.prototype.
+
+There's a difference here, with Object.create you can create an object that doesn't 
+inherit from anything, Object.create(null);, on the other hand, if you set 
+SomeConstructor.prototype = null; the newly created object will inherit from 
+Object.prototype
+
+*/
