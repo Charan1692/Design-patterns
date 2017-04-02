@@ -2,11 +2,10 @@ var foo = {};
 
 var bar = Object.create(Object.prototype);
 
-//In JavaScript inheritence is achieved using prototype
-//ECMA Script 5 introduced Object.create() to reduce the head ache from prototype way inheritence
+//In JavaScript inheritance is achieved using prototype
+//ECMA Script 5 introduced Object.create() to reduce the head ache from prototype way inheritance
 //first argument is Object's prototype (for other programming language - Parent class)
-//So, Object.create creates prototype chainning internally
-
+//So, Object.create creates prototype chaining internally
 
 var Person = {
 	firstName: "Yogesh",
@@ -72,3 +71,33 @@ SomeConstructor.prototype = null; the newly created object will inherit from
 Object.prototype
 
 */
+
+//When there is method in constructor and prototype, constructor version will be called
+//We cannot access private variable in prototype, so if we want to access private variables
+//We have to go with constructor function
+
+function Person(name) {
+	var local = "Hello ";
+	this.name = name;
+	this.getName = function () {
+		return  local + this.name;
+	}
+}
+
+Person.prototype.getName = function () {
+	return "My Name is " + this.name;
+}
+
+//We cannot access local variable in prototype
+Person.prototype.sayName = function () {
+	return "My Name is " + local;
+}
+
+function Man(name) {
+	Person.apply(this, arguments);
+}
+
+Man.prototype = Object.create(Person.prototype);
+var p = new Man("Yogesh");
+p.getName(); //Hello Yogesh
+p.sayName(); //local is not defined, error message
